@@ -25,21 +25,21 @@ public class MMImageButton extends LinearLayout
         titleText = (TextView)view.findViewById(R.id.title_btn_tv);
     }
 
-    public final void a(int i)
+    public final void setImageById(int i)
     {
         titleImage.setImageDrawable(ctx.a(i));
         titleImage.setVisibility(VISIBLE);
         titleText.setVisibility(GONE);
     }
 
-    public final void a(String s)
+    public final void setTextByString(String s)
     {
         titleText.setText(s);
         titleText.setVisibility(VISIBLE);
         titleImage.setVisibility(GONE);
     }
 
-    public final void b(int i)
+    public final void setTextById(int i)
     {
         titleText.setText(i);
         titleText.setVisibility(VISIBLE);
