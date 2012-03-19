@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, WeixinActivity!</string>
+    <string name="app_name">Weixin_demo</string>
+    
+    <string name="main_title">微信</string>
+    <string name="main_contact">通讯录</string>
+    <string name="main_addcontact">找朋友</string>
+    <string name="main_setting">设置</string>
+    <string name="main_empty_conversation">暂无会话信息</string>
+    <string name="app_new">new</string>
+</resources>
