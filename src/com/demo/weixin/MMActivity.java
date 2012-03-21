@@ -21,7 +21,19 @@ public abstract class MMActivity extends Activity{
     private LinearLayout rootView;
     private View mmTitleView;
     
+    private static float scale = 1F;
+    
     protected abstract int bodyView();
+    
+    public static float getScale()
+    {
+        return scale;
+    }
+    
+    public static void setScale(float f1)
+    {
+        scale = f1;
+    }
     
     public final Drawable a(int i1)
     {
@@ -49,6 +61,7 @@ public abstract class MMActivity extends Activity{
     
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
+        MMActivity.setScale((float)Utils.getDip(this, 160F) / 160F);
         LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
         mmActivityView  = inflater.inflate(R.layout.mm_activity, null);
         rootView = (LinearLayout)mmActivityView.findViewById(R.id.mm_root_view);

@@ -78,7 +78,7 @@ public class ConversationAdapter extends BaseAdapter{
             viewholder = (ViewHolder)view.getTag();
         }
         if(position == 0){
-            Bitmap bitmap = AvatarDrawable.a(viewholder.avatar_iv.getMeasuredWidth(),viewholder.avatar_iv.getMeasuredHeight(),"avatar/default_shake.jpg",mCtx);
+            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),"avatar/user.png",mCtx);
             viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
             viewholder.update_time_tv.setText("3月1日");
             viewholder.last_msg_tv.setText("last message");
@@ -87,11 +87,23 @@ public class ConversationAdapter extends BaseAdapter{
             viewholder.usericon_iv.setVisibility(View.GONE);
             viewholder.state_iv.setVisibility(View.GONE);
         }else if(position == 1){
-            Bitmap bitmap = AvatarDrawable.a(viewholder.avatar_iv.getMeasuredWidth(),viewholder.avatar_iv.getMeasuredHeight(),null,mCtx);
+            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),"avatar/default_gmail.jpg",mCtx);
             viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
+            viewholder.update_time_tv.setText("3月2日");
+            viewholder.last_msg_tv.setText("last message");
+            viewholder.bnickname_tv.setText("nick name");
+            viewholder.tipcnt_tv.setVisibility(View.GONE);
+            viewholder.usericon_iv.setVisibility(View.GONE);
+            viewholder.state_iv.setVisibility(View.GONE);
         }else if(position == 2){
-            Bitmap bitmap = AvatarDrawable.a(viewholder.avatar_iv.getMeasuredWidth(),viewholder.avatar_iv.getMeasuredHeight(),null,mCtx);
+            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),"avatar/default_facebook.jpg",mCtx);
             viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
+            viewholder.update_time_tv.setText("3月3日");
+            viewholder.last_msg_tv.setText("last message");
+            viewholder.bnickname_tv.setText("nick name");
+            viewholder.tipcnt_tv.setVisibility(View.GONE);
+            viewholder.usericon_iv.setVisibility(View.GONE);
+            viewholder.state_iv.setVisibility(View.GONE);
         }
 
         return view;
