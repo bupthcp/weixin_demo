@@ -10,4 +10,6 @@
     <string name="main_setting">设置</string>
     <string name="main_empty_conversation">暂无会话信息</string>
     <string name="app_new">new</string>
+    <string name="address_multi_select_create">发起会话</string>
+    <string name="address_multi_select_delete">删除</string>
 </resources>

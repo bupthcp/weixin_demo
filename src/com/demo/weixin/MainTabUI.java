@@ -17,6 +17,7 @@ public class MainTabUI extends TabActivity implements OnClickListener{
     RadioButton main_tab_settings;
     
     int currentTab = 0; 
+    TabHost tabHost;
     
     /** Called when the activity is first created. */
     @Override
@@ -33,13 +34,17 @@ public class MainTabUI extends TabActivity implements OnClickListener{
         main_tab_find_friend.setOnClickListener(this);
         main_tab_settings.setOnClickListener(this);
         
-        TabHost tabHost = getTabHost();
+        tabHost = getTabHost();
         TabSpec tabspecMainUI;
+        TabSpec tabspecAddressUIGroup;
         
         Intent intentMainUI = new Intent(this,MainUI.class);
         tabspecMainUI = tabHost.newTabSpec("tab_main").setIndicator("Tab1", getResources().getDrawable(R.drawable.icon)).setContent(intentMainUI);
         tabHost.addTab(tabspecMainUI);
         tabHost.setCurrentTab(currentTab);
+        Intent intentAddressUIGroup = new Intent(this, AddressUIGroup.class);
+        tabspecAddressUIGroup = tabHost.newTabSpec("tab_address").setIndicator("Tab2", getResources().getDrawable(R.drawable.icon)).setContent(intentAddressUIGroup);
+        tabHost.addTab(tabspecAddressUIGroup);
     }
 
     /* (non-Javadoc)
@@ -53,21 +58,29 @@ public class MainTabUI extends TabActivity implements OnClickListener{
             main_tab_address.setChecked(false);
             main_tab_find_friend.setChecked(false);
             main_tab_settings.setChecked(false);
+            currentTab = 0; 
+            tabHost.setCurrentTab(currentTab);
         }else if(paramView == main_tab_address){
             main_tab_weixin.setChecked(false);
             main_tab_address.setChecked(true);
             main_tab_find_friend.setChecked(false);
             main_tab_settings.setChecked(false);
+            currentTab = 1; 
+            tabHost.setCurrentTab(currentTab);
         }else if(paramView == main_tab_find_friend){
             main_tab_weixin.setChecked(false);
             main_tab_address.setChecked(false);
             main_tab_find_friend.setChecked(true);
             main_tab_settings.setChecked(false); 
+            currentTab = 2; 
+            tabHost.setCurrentTab(currentTab);
         }else if(paramView == main_tab_settings){
             main_tab_weixin.setChecked(false);
             main_tab_address.setChecked(false);
             main_tab_find_friend.setChecked(false);
             main_tab_settings.setChecked(true);
+            currentTab = 3; 
+            tabHost.setCurrentTab(currentTab);
         }else{
             
         }
