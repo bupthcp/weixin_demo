@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * @author huchenpeng
@@ -45,7 +46,10 @@ public abstract class MMActivity extends Activity{
     protected void setRightButtonText(int resId){
         if(null != mmTitleView){
             MMImageButton rightButton = (MMImageButton)mmTitleView.findViewById(R.id.title_btn1);
+            rightButton.setVisibility(View.VISIBLE);
             rightButton.setTextById(resId);
+            MMImageButton leftButton = (MMImageButton)mmTitleView.findViewById(R.id.title_btn4);
+            leftButton.setVisibility(View.INVISIBLE);
         }
     }
     
@@ -56,6 +60,13 @@ public abstract class MMActivity extends Activity{
             rightButton.setVisibility(View.VISIBLE);
             MMImageButton leftButton = (MMImageButton)mmTitleView.findViewById(R.id.title_btn4);
             leftButton.setVisibility(View.INVISIBLE);
+        }
+    }
+    
+    protected void setTitleText(int resId){
+        if(null != mmTitleView){
+            TextView titleView = (TextView)mmTitleView.findViewById(R.id.title);
+            titleView.setText(resId);
         }
     }
     

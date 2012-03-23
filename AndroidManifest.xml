@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainUI" android:configChanges="keyboardHidden|orientation" />
+        <activity android:name=".AddressUI" android:configChanges="keyboardHidden|orientation" />
+        
     </application>
 
 </manifest>

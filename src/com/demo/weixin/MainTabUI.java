@@ -42,7 +42,7 @@ public class MainTabUI extends TabActivity implements OnClickListener{
         tabspecMainUI = tabHost.newTabSpec("tab_main").setIndicator("Tab1", getResources().getDrawable(R.drawable.icon)).setContent(intentMainUI);
         tabHost.addTab(tabspecMainUI);
         tabHost.setCurrentTab(currentTab);
-        Intent intentAddressUIGroup = new Intent(this, AddressUIGroup.class);
+        Intent intentAddressUIGroup = new Intent(this, AddressUI.class);
         tabspecAddressUIGroup = tabHost.newTabSpec("tab_address").setIndicator("Tab2", getResources().getDrawable(R.drawable.icon)).setContent(intentAddressUIGroup);
         tabHost.addTab(tabspecAddressUIGroup);
     }

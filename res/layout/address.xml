@@ -5,7 +5,7 @@
         <ListView android:id="@+id/address_contactlist" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:transcriptMode="disabled" android:cacheColorHint="#ffffffff" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" style="@style/NavPage" />
         <TextView android:id="@+id/empty_blacklist_tip_tv" android:background="#ffced2d7" style="@style/MMFontEmptyMsgLarge" />
         <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.AlphabetScrollBar android:id="@+id/address_scrollbar" android:layout_width="25.0dip" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:layout_alignParentRight="true" />
+            <com.demo.weixin.AlphabetScrollBar android:id="@+id/address_scrollbar" android:layout_width="25.0dip" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:layout_alignParentRight="true" />
         </RelativeLayout>
     </FrameLayout>
     <HorizontalScrollView android:orientation="horizontal" android:background="@drawable/mmfooter_bg_white" android:padding="5.0dip" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="50.0dip" android:fillViewport="true">
