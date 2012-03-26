@@ -77,7 +77,7 @@ public class ConversationAdapter extends BaseAdapter{
         {
             viewholder = (ViewHolder)view.getTag();
         }
-        if(position == 0){
+        
             Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),MainUI.mConversation[position].avatar_iv_path,mCtx);
             viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
             viewholder.update_time_tv.setText(MainUI.mConversation[position].update_time);
@@ -86,70 +86,6 @@ public class ConversationAdapter extends BaseAdapter{
             viewholder.tipcnt_tv.setVisibility(View.GONE);
             viewholder.usericon_iv.setVisibility(View.GONE);
             viewholder.state_iv.setVisibility(View.GONE);
-        }else if(position == 1){
-            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),MainUI.mConversation[position].avatar_iv_path,mCtx);
-            viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
-            viewholder.update_time_tv.setText(MainUI.mConversation[position].update_time);
-            viewholder.last_msg_tv.setText(MainUI.mConversation[position].last_msg);
-            viewholder.bnickname_tv.setText(MainUI.mConversation[position].bnickname);
-            viewholder.tipcnt_tv.setVisibility(View.GONE);
-            viewholder.usericon_iv.setVisibility(View.GONE);
-            viewholder.state_iv.setVisibility(View.GONE);
-        }else if(position == 2){
-            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),MainUI.mConversation[position].avatar_iv_path,mCtx);
-            viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
-            viewholder.update_time_tv.setText(MainUI.mConversation[position].update_time);
-            viewholder.last_msg_tv.setText(MainUI.mConversation[position].last_msg);
-            viewholder.bnickname_tv.setText(MainUI.mConversation[position].bnickname);
-            viewholder.tipcnt_tv.setVisibility(View.GONE);
-            viewholder.usericon_iv.setVisibility(View.GONE);
-            viewholder.state_iv.setVisibility(View.GONE);
-        }else if(position == 3){
-            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),MainUI.mConversation[position].avatar_iv_path,mCtx);
-            viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
-            viewholder.update_time_tv.setText(MainUI.mConversation[position].update_time);
-            viewholder.last_msg_tv.setText(MainUI.mConversation[position].last_msg);
-            viewholder.bnickname_tv.setText(MainUI.mConversation[position].bnickname);
-            viewholder.tipcnt_tv.setVisibility(View.GONE);
-            viewholder.usericon_iv.setVisibility(View.GONE);
-            viewholder.state_iv.setVisibility(View.GONE);
-        }else if(position == 4){
-            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),MainUI.mConversation[position].avatar_iv_path,mCtx);
-            viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
-            viewholder.update_time_tv.setText(MainUI.mConversation[position].update_time);
-            viewholder.last_msg_tv.setText(MainUI.mConversation[position].last_msg);
-            viewholder.bnickname_tv.setText(MainUI.mConversation[position].bnickname);
-            viewholder.tipcnt_tv.setVisibility(View.GONE);
-            viewholder.usericon_iv.setVisibility(View.GONE);
-            viewholder.state_iv.setVisibility(View.GONE);
-        }else if(position == 5){
-            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),MainUI.mConversation[position].avatar_iv_path,mCtx);
-            viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
-            viewholder.update_time_tv.setText(MainUI.mConversation[position].update_time);
-            viewholder.last_msg_tv.setText(MainUI.mConversation[position].last_msg);
-            viewholder.bnickname_tv.setText(MainUI.mConversation[position].bnickname);
-            viewholder.tipcnt_tv.setVisibility(View.GONE);
-            viewholder.usericon_iv.setVisibility(View.GONE);
-            viewholder.state_iv.setVisibility(View.GONE);
-        }else if(position == 6){
-            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),MainUI.mConversation[position].avatar_iv_path,mCtx);
-            viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
-            viewholder.update_time_tv.setText(MainUI.mConversation[position].update_time);
-            viewholder.last_msg_tv.setText(MainUI.mConversation[position].last_msg);
-            viewholder.bnickname_tv.setText(MainUI.mConversation[position].bnickname);
-            viewholder.tipcnt_tv.setVisibility(View.GONE);
-            viewholder.usericon_iv.setVisibility(View.GONE);
-            viewholder.state_iv.setVisibility(View.GONE);
-        }else if(position == 7){
-            Bitmap bitmap = AvatarDrawable.a(AvatarDrawable.getScaledPx(),AvatarDrawable.getScaledPx(),MainUI.mConversation[position].avatar_iv_path,mCtx);
-            viewholder.avatar_iv.setImageDrawable(new AvatarDrawable(viewholder.avatar_iv,bitmap));
-            viewholder.update_time_tv.setText(MainUI.mConversation[position].update_time);
-            viewholder.last_msg_tv.setText(MainUI.mConversation[position].last_msg);
-            viewholder.bnickname_tv.setText(MainUI.mConversation[position].bnickname);
-            viewholder.tipcnt_tv.setVisibility(View.GONE);
-            viewholder.usericon_iv.setVisibility(View.GONE);
-            viewholder.state_iv.setVisibility(View.GONE);
-        }
 
         return view;
     }

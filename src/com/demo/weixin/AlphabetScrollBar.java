@@ -4,8 +4,15 @@
 package com.demo.weixin;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 /**
  * @author huchenpeng
@@ -13,13 +20,21 @@ import android.view.View;
  */
 public class AlphabetScrollBar extends View{
 
+    private Context mCtx;
+    private PopupWindow popupWindow;
+    private TextView headTostText;
+    private Bitmap searchIcon;
+    private int popupWindowWidth;
+    private int marginTop;
+    float e;
+    String as[]= new String[29];
+    private OnScollBarTouchListener j;
     /**
      * @param context
      * @param attrs
      */
     public AlphabetScrollBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        String as[] = new String[29];
         as[0] = "!";
         as[1] = "+";
         as[2] = "A";
@@ -52,7 +67,83 @@ public class AlphabetScrollBar extends View{
 
         setFocusable(true);
         setFocusableInTouchMode(true);
+        mCtx = context;
+        marginTop = Utils.getDip(context, 3F);
+        popupWindowWidth = Utils.getDip(context, 79F);
+        View view = inflate(context, R.layout.show_head_toast, null);
+        headTostText = (TextView)view.findViewById(R.id.show_head_toast_text);
+        popupWindow = new PopupWindow(view,popupWindowWidth,popupWindowWidth);
+        searchIcon = BitmapFactory.decodeStream(getResources().openRawResource(R.drawable.scroll_bar_search_icon));//scroll_bar_search_icon
     }
 
-
+    protected void onDraw(Canvas canvas)
+    {
+        super.onDraw(canvas);
+        int scrollBarHeight = getMeasuredHeight();
+        int scrollBarWidth = getMeasuredWidth();
+        e = (float)(scrollBarHeight - searchIcon.getHeight() - marginTop) / (1.2F * (float)as.length);
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setColor(0xff858c94);
+        paint.setTextAlign(android.graphics.Paint.Align.CENTER);
+        paint.setTextSize(e);
+        canvas.drawBitmap(searchIcon, (float)(scrollBarWidth - searchIcon.getWidth()) / 2F, marginTop, paint);
+        for(int i1 = 0; i1 < as.length; i1++)
+            canvas.drawText(as[i1], (float)scrollBarWidth / 2F, e + 1.2F * ((float)i1 * e) + (float)searchIcon.getHeight() + (float)marginTop, paint);
+    }
+    
+    public boolean onTouchEvent(MotionEvent motionevent)
+    {
+        if(motionevent.getAction() == 0 || motionevent.getAction() == 2)
+        {
+            float f = motionevent.getY();
+            if(f < 0F)
+                f = 0F;
+            if(f > (float)getMeasuredHeight())
+                f = getMeasuredHeight();
+            setBackgroundDrawable(getResources().getDrawable(R.drawable.scrollbar_bg));//scrollbar_bg
+            float f1 = f;
+            float f2 = 1.2F * e;
+            int k;
+            if(f1 < (float)(searchIcon.getHeight() + marginTop))
+            {
+                k = -1;
+            } else
+            {
+                k = (int)(((f1 - (float)searchIcon.getHeight()) + (float)marginTop) / f2);
+                if(k < 0)
+                    k = 0;
+                if(k >= as.length)
+                    k = -1 + as.length;
+            }
+            int d = k;
+            if(d == -1)
+                headTostText.setText(R.string.scroll_bar_search);
+            else
+                headTostText.setText(as[d]);
+            popupWindow.showAtLocation(this, 17, 0, 0);
+            if(j != null)
+                if(d == -1)
+                    j.a(mCtx.getString(R.string.scroll_bar_search));
+                else
+                    j.a(as[d]);
+            invalidate();
+        }
+        if(motionevent.getAction() == 1)
+        {
+            setBackgroundResource(0);
+            popupWindow.dismiss();
+        }
+        return true;
+    }
+    
+    public final void a(OnScollBarTouchListener onscollbartouchlistener)
+    {
+        j = onscollbartouchlistener;
+    }
+    
+    private abstract class OnScollBarTouchListener
+    {
+        public abstract void a(String s);
+    }
 }
