@@ -4,6 +4,7 @@
 package com.demo.weixin;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,10 @@ public class AddressUI extends MMActivity{
      */
     public static int contactNum = 12;
     public static Contact mContacts[]= new Contact[contactNum];
+    private ListView listView;
+    private AlphabetScrollBar scrollBar;
+    private scrollBarListener F = new scrollBarListener();
+    private String TAG=AddressUI.class.getSimpleName();
     
     static 
     {
@@ -28,6 +33,10 @@ public class AddressUI extends MMActivity{
             mContacts[i]= new Contact();
             mContacts[i].isSuperUser = false;
         }
+    }
+    
+    public ListView getListview(){
+        return listView;
     }
     
     @Override
@@ -45,13 +54,16 @@ public class AddressUI extends MMActivity{
         EditText edittext = (EditText)searchBar.findViewById(R.id.search_bar_et);//search_bar_et
         TextView emptyText = (TextView)findViewById(R.id.empty_blacklist_tip_tv);
         emptyText.setVisibility(View.GONE);
+        scrollBar = (AlphabetScrollBar)findViewById(R.id.address_scrollbar);
+        scrollBar.a(F);
         
         Button search_clear_bt = (Button)searchBar.findViewById(R.id.search_clear_bt);//search_clear_bt
         edittext.setCompoundDrawablesWithIntrinsicBounds(R.drawable.search_bar_icon_normal, 0, 0, 0);//search_bar_icon_normal
         
-        ListView listView = (ListView)findViewById(R.id.address_contactlist);//address_contactlist
+        listView = (ListView)findViewById(R.id.address_contactlist);//address_contactlist
         listView.addHeaderView(searchBar);
         listView.setVisibility(View.VISIBLE);
+        
         AddressAdapter adapter = new AddressAdapter(this);
         listView.setAdapter(adapter);
         listView.requestFocus();
@@ -120,5 +132,39 @@ public class AddressUI extends MMActivity{
         mContacts[11].hasTecentWeibo = false;
         mContacts[11].signature = "你幸福不";
         mContacts[11].isFirstInGroup = null;
+    }
+    
+    private class scrollBarListener implements AlphabetScrollBar.OnScollBarTouchListener{
+        private AddressUI a;
+        
+        public scrollBarListener(){
+            a = AddressUI.this;
+        }
+        
+        @Override
+        public void a(String s1) {
+            int i=0;
+			//setSelection是将该position的item呈现于视野内，并不是将该position
+			//的item放在view最上面，如果listview的长度不足以滑动到将该position
+			//放置于listview的最上端，整个view是不会继续滑动的。
+            if(s1.equals(getString(R.string.scroll_bar_search))){
+                getListview().setSelection(0);
+            }
+            else if(s1.equals("!")){
+                getListview().setSelection(1);
+            }else if(s1.equals("+")){
+                getListview().setSelection(1);
+            }else{
+                for(i=0;i<contactNum;i++){
+                    if((mContacts[i].isFirstInGroup != null)&&(mContacts[i].isFirstInGroup.equals(s1))){
+                        getListview().setSelection(i+1);
+                        Log.d(TAG,"selection:"+(i+1)+"string:"+s1);
+                        break;
+                    }
+                }
+            }
+
+
+        }
     }
 }

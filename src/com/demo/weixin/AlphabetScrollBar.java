@@ -94,7 +94,7 @@ public class AlphabetScrollBar extends View{
     
     public boolean onTouchEvent(MotionEvent motionevent)
     {
-        if(motionevent.getAction() == 0 || motionevent.getAction() == 2)
+        if(motionevent.getAction() == MotionEvent.ACTION_DOWN || motionevent.getAction() == MotionEvent.ACTION_MOVE)
         {
             float f = motionevent.getY();
             if(f < 0F)
@@ -123,13 +123,14 @@ public class AlphabetScrollBar extends View{
                 headTostText.setText(as[d]);
             popupWindow.showAtLocation(this, 17, 0, 0);
             if(j != null)
-                if(d == -1)
+                if(d == -1){
                     j.a(mCtx.getString(R.string.scroll_bar_search));
-                else
+                }
+                else{
                     j.a(as[d]);
-            invalidate();
+                }
         }
-        if(motionevent.getAction() == 1)
+        if(motionevent.getAction() == MotionEvent.ACTION_UP)
         {
             setBackgroundResource(0);
             popupWindow.dismiss();
@@ -142,7 +143,7 @@ public class AlphabetScrollBar extends View{
         j = onscollbartouchlistener;
     }
     
-    private abstract class OnScollBarTouchListener
+    public abstract interface OnScollBarTouchListener
     {
         public abstract void a(String s);
     }
