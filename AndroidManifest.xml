@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".MainUI" android:configChanges="keyboardHidden|orientation" />
         <activity android:name=".AddressUI" android:configChanges="keyboardHidden|orientation" />
-        
+        <activity android:name=".FindMoreFriendsUI" android:configChanges="keyboardHidden|orientation" />
+        <activity android:name=".SettingsUI" android:configChanges="keyboardHidden|orientation" />
     </application>
 
 </manifest>

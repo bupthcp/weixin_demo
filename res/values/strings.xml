@@ -15,4 +15,16 @@
     <string name="address_multi_select_opt">多选</string>
     <string name="group_weixin">通讯录</string>
     <string name="scroll_bar_search">搜</string>
+    <string name="find_more_friends_title">找朋友</string>
+    <string name="settings_title">设置</string>
+    <string name="find_friends_by_qrcode">扫描二维码</string>
+    <string name="contact_search_title">按号码查找</string>
+    <string name="find_friends_by_qq">查看QQ好友</string>
+    <string name="find_friends_by_mobile">查看手机通讯录</string>
+    <string name="find_friends_by_facebook">查看Facebook好友</string>
+    <string name="nearby_friend_title">查看附近的人</string>
+    <string name="shake_report_title">摇一摇</string>
+    <string name="bottle_beach_title">漂流瓶</string>
+    <string name="album_dyna_photo_ui_title">相册动态</string>
+    <string name="send_qrcode_to_microblog">“秀”出我的二维码</string>
 </resources>

@@ -37,6 +37,8 @@ public class MainTabUI extends TabActivity implements OnClickListener{
         tabHost = getTabHost();
         TabSpec tabspecMainUI;
         TabSpec tabspecAddressUIGroup;
+        TabSpec tabspecFindMoreFriendsUI;
+        TabSpec tabspecSettingsUI;
         
         Intent intentMainUI = new Intent(this,MainUI.class);
         tabspecMainUI = tabHost.newTabSpec("tab_main").setIndicator("Tab1", getResources().getDrawable(R.drawable.icon)).setContent(intentMainUI);
@@ -45,6 +47,12 @@ public class MainTabUI extends TabActivity implements OnClickListener{
         Intent intentAddressUIGroup = new Intent(this, AddressUI.class);
         tabspecAddressUIGroup = tabHost.newTabSpec("tab_address").setIndicator("Tab2", getResources().getDrawable(R.drawable.icon)).setContent(intentAddressUIGroup);
         tabHost.addTab(tabspecAddressUIGroup);
+        Intent intentFindMoreFriends = new Intent(this, FindMoreFriendsUI.class);
+        tabspecFindMoreFriendsUI = tabHost.newTabSpec("tab_address").setIndicator("Tab3", getResources().getDrawable(R.drawable.icon)).setContent(intentFindMoreFriends);
+        tabHost.addTab(tabspecFindMoreFriendsUI);
+        Intent intentSettingsUI = new Intent(this, SettingsUI.class);
+        tabspecSettingsUI = tabHost.newTabSpec("tab_address").setIndicator("Tab3", getResources().getDrawable(R.drawable.icon)).setContent(intentSettingsUI);
+        tabHost.addTab(tabspecSettingsUI);
     }
 
     /* (non-Javadoc)
