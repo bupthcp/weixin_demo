@@ -31,7 +31,7 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return 0;
+        return b.size();
     }
 
 
@@ -59,12 +59,24 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
     }
 
     /* (non-Javadoc)
+     * @see android.widget.BaseAdapter#notifyDataSetChanged()
+     */
+    @Override
+    public void notifyDataSetChanged() {
+        // TODO Auto-generated method stub
+        super.notifyDataSetChanged();
+        int l;
+        l = 0;
+        i = new int[b.size()];
+    }
+
+    /* (non-Javadoc)
      * @see com.demo.weixin.IPreferenceScreen#a(java.lang.String)
      */
     @Override
-    public Preference a(String s) {
-        // TODO Auto-generated method stub
-        return null;
+    public final Preference a(String s)
+    {
+        return (Preference)a.get(s);
     }
 
     /* (non-Javadoc)
@@ -83,7 +95,7 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
     @Override
     public void a(int i) {
         // TODO Auto-generated method stub
-        c.a(i, this);
+        c.inflate(i, this);
     }
 
     /* (non-Javadoc)
@@ -126,4 +138,5 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
     private final HashMap a = new HashMap();
     private final LinkedList b = new LinkedList();
     private final MMPreferenceInflater c;
+    private int i[];
 }
