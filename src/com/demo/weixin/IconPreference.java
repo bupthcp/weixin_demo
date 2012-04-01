@@ -32,10 +32,20 @@ public class IconPreference extends Preference{
         g = j;
     }
     
+    public final void a(int j)
+    {
+        d = j;
+    }
+    
     public final void a(String s)
     {
         e = s;
-        f = 0x7f02019a;
+    }
+    
+    public final void a(String s, int j)
+    {
+        b = s;
+        c = j;
     }
     
     public IconPreference(Context context, AttributeSet attributeset)
@@ -72,13 +82,15 @@ public class IconPreference extends Preference{
         }
         linearlayout = (LinearLayout)view.findViewById(R.id.mm_preference_ll_id);
         textview = (TextView)view.findViewById(R.id.text_tv_one);
-//        if(textview != null)
-//        {
-//            textview.setVisibility(d);
-//            textview.setText(b);
-//            if(c != -1)
-//                textview.setBackgroundDrawable(i.a(c));
-//        }
+        if(textview != null)
+        {
+            textview.setVisibility(d);
+            textview.setText(b);
+            if(c != -1){
+                textview.setBackgroundResource(c);
+//                textview.setBackgroundDrawable(((MMActivity)mCtx).a(c));
+            }   
+        }
 //        textview1 = (TextView)view.findViewById(R.id.text_tv_two);
 //        if(textview1 != null)
 //        {
@@ -103,4 +115,7 @@ public class IconPreference extends Preference{
     private String e;
     private int g;
     private int f;
+    private int d;
+    private String b;
+    private int c;
 }

@@ -46,6 +46,13 @@ public class FindMoreFriendsUI extends MMPreference{
                 iconpreference.a("");
                 iconpreference.a(a(R.drawable.find_more_friend_near_icon));  
         }
+        iconpreference1 = (IconPreference)a.a("find_friends_by_qrcode");
+        if(iconpreference1 != null)
+        {
+            iconpreference1.a(a(R.drawable.find_friends_by_qrcode));//R.drawable.find_friends_by_qrcode
+            iconpreference1.a(View.VISIBLE);
+            //iconpreference1.a((new StringBuilder()).append(" ").append(getString(R.string.app_new)).append(" ").toString(), R.drawable.tab_unread_bg); 
+        }
     }
     
     public void onResume()
