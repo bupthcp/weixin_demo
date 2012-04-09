@@ -96,6 +96,7 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
         int i1;
         Preference preference = (Preference)b.get(position);
         view1 = preference.getView(view, parent);
+        view1.setBackgroundDrawable(((MMActivity)mCtx).a(R.drawable.preference_item));
 //        if(preference.getLayoutResource() != R.layout.mm_preference){
 ////            view1.setAlpha(0);
 //            view1 = preference.getView(null, parent);
