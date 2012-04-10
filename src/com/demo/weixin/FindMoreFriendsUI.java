@@ -30,28 +30,62 @@ public class FindMoreFriendsUI extends MMPreference{
         
         IconPreference iconpreference;
         IconPreference iconpreference1;
+        IconPreference iconpreference2;
         IconPreference iconpreference3;
+        IconPreference iconpreference4;
         IconPreference iconpreference5;
         IconPreference iconpreference6;
-        IconPreference iconpreference8;
-        IconPreference iconpreference2;
-        IconPreference iconpreference4;
         IconPreference iconpreference7;
-        IconPreference iconpreference9;
         
-        iconpreference = (IconPreference)a.a("find_friends_by_near");
+
+        iconpreference = (IconPreference)a.a("find_friends_by_qrcode");
         if(iconpreference != null)
         {
-                iconpreference.b(View.VISIBLE);
-                iconpreference.a("");
-                iconpreference.a(a(R.drawable.find_more_friend_near_icon));  
+            iconpreference.a(a(R.drawable.find_friends_by_qrcode));
+            iconpreference.a(View.VISIBLE);
+            iconpreference.a((new StringBuilder()).append(" ").append(getString(R.string.app_new)).append(" ").toString(), R.drawable.tab_unread_bg); 
         }
-        iconpreference1 = (IconPreference)a.a("find_friends_by_qrcode");
+        iconpreference1 = (IconPreference)a.a("find_friends_by_micromsg");
         if(iconpreference1 != null)
         {
-            iconpreference1.a(a(R.drawable.find_friends_by_qrcode));//R.drawable.find_friends_by_qrcode
+            iconpreference1.a(a(R.drawable.find_friends_by_micromsg));
             iconpreference1.a(View.VISIBLE);
-            //iconpreference1.a((new StringBuilder()).append(" ").append(getString(R.string.app_new)).append(" ").toString(), R.drawable.tab_unread_bg); 
+        }
+        iconpreference2 = (IconPreference)a.a("find_friends_by_qq");
+        if(iconpreference2 != null)
+        {
+            iconpreference2.a(a(R.drawable.find_more_friend_qq_icon));
+            iconpreference2.a(View.VISIBLE);
+        }
+        iconpreference3 = (IconPreference)a.a("find_friends_by_mobile");
+        if(iconpreference3 != null)
+        {
+            iconpreference3.a(a(R.drawable.find_more_friend_mobile_icon));
+            iconpreference3.a(View.VISIBLE);
+        }
+        iconpreference4 = (IconPreference)a.a("find_friends_by_near");
+        if(iconpreference4 != null)
+        {
+            iconpreference4.a(a(R.drawable.find_more_friend_near_icon));
+            iconpreference4.a(View.VISIBLE);
+        }
+        iconpreference5 = (IconPreference)a.a("find_friends_by_shake");
+        if(iconpreference5 != null)
+        {
+            iconpreference5.a(a(R.drawable.find_more_friend_shake));
+            iconpreference5.a(View.VISIBLE);
+        }
+        iconpreference6 = (IconPreference)a.a("voice_bottle");
+        if(iconpreference6 != null)
+        {
+            iconpreference6.a(a(R.drawable.find_more_friend_bottle));
+            iconpreference6.a(View.VISIBLE);
+        }
+        iconpreference7 = (IconPreference)a.a("send_card_to_microblog");
+        if(iconpreference7 != null)
+        {
+            iconpreference7.a(a(R.drawable.send_card_to_microblog));
+            iconpreference7.a(View.VISIBLE);
         }
     }
     

@@ -96,21 +96,21 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
         int i1;
         Preference preference = (Preference)b.get(position);
         view1 = preference.getView(view, parent);
-        view1.setBackgroundDrawable(((MMActivity)mCtx).a(R.drawable.preference_item));
-//        if(preference.getLayoutResource() != R.layout.mm_preference){
-////            view1.setAlpha(0);
-//            view1 = preference.getView(null, parent);
-//            return view1;
-//        }
-//        if(i[position] == 1){
-//            view1.setBackgroundResource(R.drawable.preference_first_item);
-//        }
-//        else if(i[position] == 2){
-//            view1.setBackgroundResource(R.drawable.preference_last_item);
-//        }
-//        else if(i[position] == 0){
-//            view1.setBackgroundResource(R.drawable.preference_item);
-//        }
+//        view1.setBackgroundDrawable(((MMActivity)mCtx).a(R.drawable.preference_item));
+
+        if(i[position] == 0x000){
+            view1.setBackgroundResource(R.drawable.preference_first_item);
+        }
+        else if(i[position] == 0x010){
+            view1.setBackgroundResource(R.drawable.preference_item);
+        }
+        else if(i[position] == 0x001){
+            view1.setBackgroundResource(R.drawable.preference_last_item);
+        }else if(i[position] == 0x011){
+            view1.setBackgroundResource(R.drawable.preference_single_item);
+        }else if(i[position] == 0x100){
+            view1.setAlpha(0);
+        }
         return view1;
     }
 
@@ -120,52 +120,56 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
     public void notifyDataSetChanged() {
         // TODO Auto-generated method stub
         super.notifyDataSetChanged();
-        int l;
-        l = 0;
+        int  l = 0;
         i = new int[b.size()];
         if(i.length<=0){
             return;
         }
+		//第一个0x000
+        //中间的0x010
+		//最后的0x001
+		//单独的0x011
+		//分隔符0x100
         while(l < b.size()) 
         {
             if(i.length == 1)
             {
                 if(((Preference)b.get(l)).getLayoutResource() == R.layout.mm_preference)//mm_preference
-                    i[l] = 3;
+                    i[l] = 0x011;
                 else
-                    i[l] = 4;
+                    i[l] = 0x100;
                 a((Preference)b.get(l), g);
-                continue; /* Loop/switch isn't completed */
+                break;
             }
             a((Preference)b.get(l), g);
             if(((Preference)b.get(l)).getLayoutResource() == R.layout.mm_preference)
-            {
+            {   
                 if(l == 0)
                 {
-                    int ai4[] = i;
-                    ai4[l] = 1 | ai4[l];
-                } else
-                {
-                    if(l == -1 + b.size())
+                    i[l] = 0x000;
+                }else if(l == (b.size()-1)){
+                    if(((Preference)b.get(l-1)).getLayoutResource() != R.layout.mm_preference)
                     {
-                        int ai3[] = i;
-                        ai3[l] = 2 | ai3[l];
+                        i[l] = 0x011;
+                    }else{
+                        i[l] = 0x001;
                     }
-                    if(((Preference)b.get(l + -1)).getLayoutResource() != R.layout.mm_preference)
+                }
+                else
+                {
+                    if(((Preference)b.get(l-1)).getLayoutResource() != R.layout.mm_preference)
                     {
-                        int ai2[] = i;
-                        ai2[l] = 1 | ai2[l];
+                        i[l] = 0x000;
+                    }else{
+                        i[l] = 0x010;
                     }
                 }
             } else
             {
-                int ai[] = i;
-                ai[l] = 4 | ai[l];
-                if(l != 0 && ((Preference)b.get(l + -1)).getLayoutResource() == R.layout.mm_preference)
+                i[l] = 0x100;
+                if(l != 0 && ((Preference)b.get(l-1)).getLayoutResource() == R.layout.mm_preference)
                 {
-                    int ai1[] = i;
-                    int i1 = l + -1;
-                    ai1[i1] = 2 | ai1[i1];
+                    i[l-1] = 0x001;
                 }
             }
             l++;

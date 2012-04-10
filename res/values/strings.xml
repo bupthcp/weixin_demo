@@ -27,4 +27,22 @@
     <string name="bottle_beach_title">漂流瓶</string>
     <string name="album_dyna_photo_ui_title">相册动态</string>
     <string name="send_qrcode_to_microblog">“秀”出我的二维码</string>
+    <string name="settings_account">个人名片</string>
+    <string name="settings_signature_empty">未填写</string>
+    <string name="settings_account_info">我的帐号</string>
+    <string name="settings_bind_mobile_title">手机通讯录匹配</string>
+    <string name="settings_tweibo_open">在名片中展示腾讯微博</string>
+    <string name="settings_chatting_bg">聊天背景</string>
+    <string name="settings_about_system">通用</string>
+    <string name="settings_plugins">系统插件</string>
+    <string name="settings_about_blacklist">黑名单</string>
+    <string name="settings_about_privacy">隐私</string>
+    <string name="settings_system_notice">系统通知</string>
+    <string name="settings_traffic_statistic">流量统计</string>
+    <string name="settings_market_ratings">去给微信打个分，评价一把</string>
+    <string name="settings_feedback">意见反馈</string>
+    <string name="settings_about_micromsg">关于微信</string>
+    <string name="settings_reset">清空聊天记录</string>
+    <string name="settings_logout">退出登录</string>
+    <string name="settings_signature">个性签名</string>
 </resources>
