@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,18 +99,19 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
         view1 = preference.getView(view, parent);
 //        view1.setBackgroundDrawable(((MMActivity)mCtx).a(R.drawable.preference_item));
 
-        if(i[position] == 0x000){
+        if(i[position] == FIRST){
             view1.setBackgroundResource(R.drawable.preference_first_item);
         }
-        else if(i[position] == 0x010){
+        else if(i[position] == MIDDLE){
             view1.setBackgroundResource(R.drawable.preference_item);
         }
-        else if(i[position] == 0x001){
+        else if(i[position] == LAST){
             view1.setBackgroundResource(R.drawable.preference_last_item);
-        }else if(i[position] == 0x011){
+        }else if(i[position] == SINGLE){
             view1.setBackgroundResource(R.drawable.preference_single_item);
-        }else if(i[position] == 0x100){
-            view1.setAlpha(0);
+        }else if(i[position] == DIVIDER){
+            //we can not use setAlpha here . setAlpha is not supported before SDK 11
+            view1.setBackgroundDrawable(null);
         }
         return view1;
     }
@@ -132,46 +134,72 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
 		//分隔符0x100
         while(l < b.size()) 
         {
-            if(i.length == 1)
-            {
-                if(((Preference)b.get(l)).getLayoutResource() == R.layout.mm_preference)//mm_preference
-                    i[l] = 0x011;
-                else
-                    i[l] = 0x100;
-                a((Preference)b.get(l), g);
-                break;
-            }
-            a((Preference)b.get(l), g);
-            if(((Preference)b.get(l)).getLayoutResource() == R.layout.mm_preference)
-            {   
-                if(l == 0)
-                {
-                    i[l] = 0x000;
+            if(b.get(l) instanceof PreferenceCategory){
+                i[l] = DIVIDER;
+            }else{
+                if(l==0){
+                    i[l] = DIVIDER;
+                    l++;
+                    continue;
                 }else if(l == (b.size()-1)){
-                    if(((Preference)b.get(l-1)).getLayoutResource() != R.layout.mm_preference)
-                    {
-                        i[l] = 0x011;
+                    if(b.get(l-1) instanceof PreferenceCategory){
+                        i[l] = SINGLE;
                     }else{
-                        i[l] = 0x001;
+                        i[l] = LAST;
                     }
+                    l++;
+                    continue;
                 }
-                else
-                {
-                    if(((Preference)b.get(l-1)).getLayoutResource() != R.layout.mm_preference)
-                    {
-                        i[l] = 0x000;
-                    }else{
-                        i[l] = 0x010;
-                    }
-                }
-            } else
-            {
-                i[l] = 0x100;
-                if(l != 0 && ((Preference)b.get(l-1)).getLayoutResource() == R.layout.mm_preference)
-                {
-                    i[l-1] = 0x001;
+                if( (b.get(l-1) instanceof PreferenceCategory) && (b.get(l+1) instanceof PreferenceCategory)){
+                    i[l] = SINGLE;
+                }else if((b.get(l-1) instanceof PreferenceCategory) && !(b.get(l+1) instanceof PreferenceCategory)){
+                    i[l] = FIRST;
+                }else if(!(b.get(l-1) instanceof PreferenceCategory) && (b.get(l+1) instanceof PreferenceCategory)){
+                    i[l] = LAST;
+                }else{
+                    i[l] = MIDDLE;
                 }
             }
+//            if(i.length == 1)
+//            {
+//                if(((Preference)b.get(l)).getLayoutResource() == R.layout.mm_preference)//mm_preference
+//                    i[l] = 0x011;
+//                else
+//                    i[l] = 0x100;
+//                a((Preference)b.get(l), g);
+//                break;
+//            }
+//            a((Preference)b.get(l), g);
+//            if(((Preference)b.get(l)).getLayoutResource() == R.layout.mm_preference)
+//            {   
+//                if(l == 0)
+//                {
+//                    i[l] = 0x000;
+//                }else if(l == (b.size()-1)){
+//                    if(((Preference)b.get(l-1)).getLayoutResource() != R.layout.mm_preference)
+//                    {
+//                        i[l] = 0x011;
+//                    }else{
+//                        i[l] = 0x001;
+//                    }
+//                }
+//                else
+//                {
+//                    if(((Preference)b.get(l-1)).getLayoutResource() != R.layout.mm_preference)
+//                    {
+//                        i[l] = 0x000;
+//                    }else{
+//                        i[l] = 0x010;
+//                    }
+//                }
+//            } else
+//            {
+//                i[l] = 0x100;
+//                if(l != 0 && ((Preference)b.get(l-1)).getLayoutResource() == R.layout.mm_preference)
+//                {
+//                    i[l-1] = 0x001;
+//                }
+//            }
             l++;
         }
         Log.i(TAG, "on data set changed");
@@ -261,4 +289,9 @@ public class MMPreferenceAdapter extends BaseAdapter implements IPreferenceScree
     private final SharedPreferences g;
     private boolean j;
     private boolean k;
+    private static int FIRST = 1;
+    private static int MIDDLE = 2;
+    private static int LAST = 3;
+    private static int SINGLE = 4 ;
+    private static int DIVIDER =5;
 }
